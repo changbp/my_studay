@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="com.cbp.hbase" />
+        <module name="com.cbp.java" />
+        <module name="com.cbp.flink" />
+        <module name="com.cbp.spark" />
+        <module name="com.cbp.kafka" />
+        <module name="com.cbp.calcite" />
+        <module name="com.cbp.hive" />
+        <module name="com.cbp.scala" />
+        <module name="com.cbp.mysql" />
+        <module name="com.cbp.phoenix" />
+        <module name="com.cbp.redis" />
+        <module name="com.cbp.elasticsearch" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

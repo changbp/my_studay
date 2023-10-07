@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/com.cbp.calcite/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.calcite/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.elasticsearch/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.elasticsearch/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.flink/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.flink/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.hbase/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.hbase/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.hive/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.hive/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.java/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.java/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.kafka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.kafka/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.mysql/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.mysql/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.phoenix/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.phoenix/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.redis/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.scala/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.scala/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.spark/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.cbp.spark/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

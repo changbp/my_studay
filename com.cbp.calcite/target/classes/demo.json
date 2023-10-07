@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "defaultSchema": "MYSQL",
+  "schemas": [
+    {
+      "name": "MYSQL",
+      "type": "custom",
+      "factory": "org.apache.calcite.adapter.jdbc.JdbcSchema$Factory",
+      "operand": {
+        "jdbcDriver": "com.mysql.jdbc.Driver",
+        "jdbcUrl": "jdbc:mysql://192.168.1.215:3306/test_sl?useSSL=false",
+        "jdbcUser": "root",
+        "jdbcPassword": "123456"
+      }
+    }
+  ]
+}
