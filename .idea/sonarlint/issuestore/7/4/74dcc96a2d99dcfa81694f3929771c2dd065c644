@@ -1,0 +1,12 @@
+
+^
+java:S1854"ARemove this useless assignment to local variable "atlasTypesDef".(¹£¥²8×ğ¦ø¶1
+c
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(»ú†‰ıÿÿÿÿ8‰ñ¦ø¶1
+b
+java:S3252"EUse static access with "com.alibaba.fastjson.JSON" for "parseObject".(¹£¥²8ñ¦ø¶1
+O
+java:S1481"2Remove this unused "atlasTypesDef" local variable.(¹£¥²8ñ¦ø¶1
+V	java:S125)"<This block of commented-out lines of code should be removed.(õŒàıÿÿÿÿ
+m
+java:S1128"PRemove this unused import 'org.apache.atlas.model.typedef.AtlasRelationshipDef'.(©‚§°8’Ö†¶1

@@ -3,8 +3,10 @@ package com.cbp.test;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.atlas.AtlasClientV2;
 import org.apache.atlas.AtlasServiceException;
+import org.apache.atlas.model.discovery.AtlasSearchResult;
 import org.apache.atlas.model.instance.AtlasEntity;
 import org.apache.atlas.model.typedef.AtlasTypesDef;
+import org.elasticsearch.common.collect.Tuple;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -22,49 +24,84 @@ import java.util.Date;
 public class AtlasPgTest {
     public static void main(String[] args) throws Exception {
         AtlasClientV2 atlasClientV2 = new AtlasClientV2(new String[]{"http://132.35.231.159:21000/"}, new String[]{"admin", "!QAZ2wsx3edc"});
-//        File file = new File("D:\\rdbms\\20000-postgresql_model.json");
-//        String jsonStr = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
-//        AtlasTypesDef atlasTypesDef = JSONObject.parseObject(jsonStr, AtlasTypesDef.class);
+        File file = new File("D:\\rdbms\\40000-postgresql_model.json");
+        String jsonStr = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+        AtlasTypesDef atlasTypesDef = JSONObject.parseObject(jsonStr, AtlasTypesDef.class);
 //        atlasClientV2.createAtlasTypeDefs(atlasTypesDef);
-//        // 创建instance
+//////        // 创建instance
 //        AtlasEntity.AtlasEntityWithExtInfo instance = createInstance(getConn());
 //        atlasClientV2.createEntity(instance);
         // 创建db
-//        AtlasEntity.AtlasEntityWithExtInfo database = createDb("db_2023", "c76d14c7-864a-484b-a571-8c8225d86899");
+//        AtlasEntity.AtlasEntityWithExtInfo database = createDb("db_2023", "13fd274a-ae2d-4ff5-8a08-7317d84634f3");
 ////        atlasClientV2.deleteEntityByGuid("f27fde31-247c-4081-9da5-276423c492a1");
 //        atlasClientV2.createEntity(database);
-        // 创建table
-//        List<String> nameList = getTableNameList(getConn(), "db_2023");
-//        if (nameList != null && nameList.size() > 0) {
-//            nameList.forEach(tableName -> {
-//                String qualifiedNameTable = "db_2023" + "." + tableName + "@192.168.110.101@postgresql";
-//                AtlasEntity.AtlasEntityWithExtInfo table = createTable(getConn(), tableName,
-//                        qualifiedNameTable,"bb612052-bc52-435a-9e3a-0c9189bc2c0a");
+        // 创建schema
+//        List<String> schemas = getSchemas(getConn());
+//        if (schemas != null) {
+//            schemas.forEach(schema -> {
+//                AtlasEntity.AtlasEntityWithExtInfo schemaEntity = createSchema(schema, "a1b5bad6-94b3-4d0d-895b-81eaf90cc084");
 //                try {
-//                    atlasClientV2.createEntity(table);
+//                    atlasClientV2.createEntity(schemaEntity);
 //                } catch (AtlasServiceException e) {
 //                    e.printStackTrace();
 //                }
 //            });
 //        }
+
+        String qualifiedNameTable = "db_2023.public.student.@192.168.110.101@postgresql";
+        AtlasEntity.AtlasEntityWithExtInfo table = createTable(getConn(), "student",
+                qualifiedNameTable, "01cd48e1-9caf-4866-965e-8b12a35011d6");
+        atlasClientV2.createEntity(table);
+        // 创建table
+//        List<String> schemas = getSchemas(getConn());
+//        if (schemas != null) {
+//            for (String schema : schemas) {
+//                String typeDbName = "db_2023." + schema + "@192.168.110.101@postgresql";
+//                Tuple<String, String> entity = getEntity(atlasClientV2, "postgresql_schema", typeDbName);
+//
+//                List<String> nameLists = getTableNameList(getConn(), "db_2023", schema);
+//                if (nameLists != null && nameLists.size() > 0) {
+//                    for (String tableName : nameLists) {
+//                        String qualifiedNameTable = "db_2023" + "." + schema + "." + tableName + "@192.168.110.101@postgresql";
+//                        AtlasEntity.AtlasEntityWithExtInfo table = createTable(getConn(), tableName,
+//                                qualifiedNameTable, entity.v1());
+//                        try {
+//                            atlasClientV2.createEntity(table);
+//                        } catch (AtlasServiceException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//            }
+//        }
         // 创建column
 //        atlasClientV2.deleteEntityByGuid("184dea0b-e613-40d9-a06f-858011372dca");
 //        atlasClientV2.deleteEntityByGuid("fbbd1cf4-bc0e-45b3-9c11-a6ddf4fb8fd0");
 //
-        List<String> columnNameList = getColumnNameList(getConn(), "db_2023", "student");
-        if (columnNameList != null && columnNameList.size() > 0) {
-            columnNameList.forEach(columnName -> {
-                String qualifiedNameColumnName =
-                        "db_2023.student" + "." + columnName + "@192.168.110.101@postgresql";
-                AtlasEntity.AtlasEntityWithExtInfo column = createColumn(getConn(), columnName,
-                        qualifiedNameColumnName, "2ebd355a-af63-4fc3-915d-372dd2db3b74");
-                try {
-                    atlasClientV2.createEntity(column);
-                } catch (AtlasServiceException e) {
-                    e.printStackTrace();
-                }
-            });
+//        List<String> columnNameList = getColumnNameList(getConn(), "db_2023", "student");
+//        if (columnNameList != null && columnNameList.size() > 0) {
+//            columnNameList.forEach(columnName -> {
+//                String qualifiedNameColumnName =
+//                        "db_2023.student" + "." + columnName + "@192.168.110.101@postgresql";
+//                AtlasEntity.AtlasEntityWithExtInfo column = createColumn(getConn(), columnName,
+//                        qualifiedNameColumnName, "2ebd355a-af63-4fc3-915d-372dd2db3b74");
+//                try {
+//                    atlasClientV2.createEntity(column);
+//                } catch (AtlasServiceException e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//        }
+    }
+
+    private static Tuple<String, String> getEntity(AtlasClientV2 atlasClientV2, String typeName, String qualifiedName) {
+        try {
+            AtlasSearchResult entity = atlasClientV2.basicSearch(typeName, null, null, false, 999, 0);
+            return new Tuple<>(entity.getEntities().get(0).getGuid(), qualifiedName);
+        } catch (AtlasServiceException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     private static AtlasEntity.AtlasEntityWithExtInfo createColumn(Connection conn, String columnName,
@@ -247,6 +284,7 @@ public class AtlasPgTest {
         //外键
         attributes.put("name", tableName);
         attributes.put("owner", "root");
+        attributes.put("schema", "public");
         ResultSet resultSet = null;
         Statement statement = null;
         try {
@@ -260,10 +298,11 @@ public class AtlasPgTest {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        HashMap<String, Object> db = new HashMap<>(5);
-        db.put("guid", guId);
-        db.put("typeName", "postgresql_db");
-        attributes.put("db", db);
+
+        HashMap<String, String> schema = new HashMap<>(5);
+        schema.put("guid", guId);
+        schema.put("typeName", "postgresql_schemas");
+        attributes.put("schemas", schema);
         atlasEntity.setAttributes(attributes);
         AtlasEntity.AtlasEntityWithExtInfo atlasEntityWithExtInfo = new AtlasEntity.AtlasEntityWithExtInfo();
         atlasEntityWithExtInfo.setEntity(atlasEntity);
@@ -317,7 +356,6 @@ public class AtlasPgTest {
                 if (statement != null) {
                     statement.close();
                 }
-                conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -350,7 +388,34 @@ public class AtlasPgTest {
         return atlasEntityWithExtInfo;
     }
 
-    public static List<String> getTableNameList(Connection conn, String dbName) {
+    private static AtlasEntity.AtlasEntityWithExtInfo createSchema(String schema, String guId) {
+        AtlasEntity atlasEntity = new AtlasEntity();
+        atlasEntity.setTypeName("postgresql_schemas");
+        HashMap<String, Object> attributes = new HashMap<>(10);
+        attributes.put("qualifiedName", "db_2023." + schema + "@192.168.110.101@postgresql");
+        attributes.put("owner", "psotgres");
+        attributes.put("ownerType", "user");
+        attributes.put("name", schema);
+        //查date
+        attributes.put("emailAddress", "1@qq.com");
+        attributes.put("createdBy", "psotgres");
+        attributes.put("createTime", new Date());
+        attributes.put("updatedBy", "psotgres");
+        attributes.put("updateTime", new Date());
+        //描述
+        attributes.put("description", "测试pg创建db");
+        HashMap<String, Object> instance = new HashMap<>(5);
+        instance.put("guid", guId);
+        instance.put("typeName", "postgresql_db");
+        attributes.put("db", instance);
+        atlasEntity.setAttributes(attributes);
+        AtlasEntity.AtlasEntityWithExtInfo atlasEntityWithExtInfo = new AtlasEntity.AtlasEntityWithExtInfo();
+        atlasEntityWithExtInfo.setEntity(atlasEntity);
+        return atlasEntityWithExtInfo;
+    }
+
+
+    public static List<String> getTableNameList(Connection conn, String dbName, String schema) {
         PreparedStatement statement = null;
         ResultSet rs = null;
         List<String> tableNameList = new ArrayList<>();
@@ -359,7 +424,7 @@ public class AtlasPgTest {
                 "FROM\n" +
                 "\tinformation_schema.tables \n" +
                 "WHERE\n" +
-                "\ttable_catalog = '" + dbName + "' and table_schema = 'public'";
+                "\ttable_catalog = '" + dbName + "' and table_schema = '" + schema + "'";
         try {
             statement = conn.prepareStatement(dbQuery);
             rs = statement.executeQuery();
@@ -383,17 +448,49 @@ public class AtlasPgTest {
 
     public static Connection getConn() {
         // 创建数据库连接
-        String url = "jdbc:postgresql://hadoop1:5432/db_2023";
+        String url = "jdbc:postgresql://132.35.231.161:5432";
+        String newUrl = url.concat("/").concat("db_2023");
         String username = "postgres";
-        String password = "123456";
+        String password = "Jc@pi23ZYCus!";
         Connection conn = null;
         try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection(url, username, password);
+            conn = DriverManager.getConnection(newUrl, username, password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return conn;
+    }
+
+    public static List<String> getSchemas(Connection conn) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        List<String> schemaList = new ArrayList<>();
+        String dbQuery = "SELECT schema_name FROM information_schema.schemata where schema_name " +
+                "not in ('information_schema','pg_catalog','pg_toast');";
+        try {
+            statement = conn.prepareStatement(dbQuery);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                schemaList.add(rs.getString(1));
+            }
+            return schemaList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     public static AtlasEntity.AtlasEntityWithExtInfo createInstance(Connection conn) {

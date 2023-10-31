@@ -1,0 +1,13 @@
+
+V	java:S125"<This block of commented-out lines of code should be removed.(à‹Ğœüÿÿÿÿ
+S	java:S1060"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ
+K
+java:S1128"6Remove this unused import 'com.alibaba.fastjson.JSON'.(Ö¢å$
+U
+java:S1128"?Remove this unused import 'com.alibaba.fastjson.TypeReference'.(ÿÖóò
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ

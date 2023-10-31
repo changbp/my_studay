@@ -12,12 +12,14 @@ import java.sql.SQLException;
  */
 public class SqlServerTest {
     public static void main(String[] args) {
+        Connection conn = getConn();
+        System.out.println(conn);
 
     }
 
     public static Connection getConn() {
-        // 创建数据库连接
-        String url = "jdbc:sqlserver://hadoop1:1433;database=students";
+        // 创建数据库连接 ;database=students
+        String url = "jdbc:sqlserver://hadoop1:1433";
         String username = "sa";
         String password = "1234Qwer";
         Connection conn = null;

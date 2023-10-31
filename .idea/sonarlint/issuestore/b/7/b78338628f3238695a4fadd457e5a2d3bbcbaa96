@@ -1,0 +1,39 @@
+
+u
+java:S1488‹"^Immediately return this expression instead of assigning it to the temporary variable "entity".(ŠÎÅ¬
+Q	java:S125'"<This block of commented-out lines of code should be removed.(µÔÿ
+G
+java:S1602T",Remove useless curly braces around statement(ó’Áóşÿÿÿÿ
+Q	java:S125w"<This block of commented-out lines of code should be removed.(Úö‡
+b
+java:S3252y"LUse static access with "org.apache.commons.lang3.StringUtils" for "isEmpty".(—´ê‰
+T	java:S106"9Replace this use of System.out or System.err by a logger.(™ö§íúÿÿÿÿ
+R
+java:S1128"6Remove this unused import 'com.alibaba.fastjson.JSON'.(Ö¢å$8¯Û¡ƒ·1
+]
+java:S1128";Remove this unused import 'com.alibaba.fastjson.JSONArray'.(ÿÀâ³ùÿÿÿÿ8¯Û¡ƒ·1
+Y
+java:S1128"<Remove this unused import 'com.alibaba.fastjson.JSONObject'.(äıµ8¯Û¡ƒ·1
+ƒ
+java:S1128"aRemove this unused import 'com.clickhouse.client.internal.google.protobuf.compiler.PluginProtos'.(ıëÑ¼şÿÿÿÿ8¯Û¡ƒ·1
+l
+java:S1128"JRemove this unused import 'com.fasterxml.jackson.core.type.TypeReference'.(ãĞß¤ÿÿÿÿÿ8°Û¡ƒ·1
+e
+java:S1128"HRemove this unused import 'com.sun.jersey.core.util.MultivaluedMapImpl'.(ôƒéİ8°Û¡ƒ·1
+b
+java:S1128
+"@Remove this unused import 'com.unicom.udme.constants.Constants'.(¿ô³–ùÿÿÿÿ8°Û¡ƒ·1
+e
+java:S1128"CRemove this unused import 'org.apache.atlas.AtlasServiceException'.(¾¿ÃÍøÿÿÿÿ8°Û¡ƒ·1
+b
+java:S1128"@Remove this unused import 'org.apache.atlas.model.SearchFilter'.(ºÚÃÕıÿÿÿÿ8°Û¡ƒ·1
+t
+java:S1128"RRemove this unused import 'org.apache.atlas.model.typedef.AtlasClassificationDef'.(­‰¿ıÿÿÿÿ8±Û¡ƒ·1
+k
+java:S1128"IRemove this unused import 'org.apache.atlas.model.typedef.AtlasTypesDef'.(•£ Éÿÿÿÿÿ8±Û¡ƒ·1
+h
+java:S1128"KRemove this unused import 'shaded.parquet.org.codehaus.jackson.JsonParser'.(º„ìÔ8±Û¡ƒ·1
+Y
+java:S1128"<Remove this unused import 'javax.ws.rs.core.MultivaluedMap'.(Ï¢×ä8±Û¡ƒ·1
+Q
+java:S1128"4Remove this unused import 'java.util.stream.Stream'.(ó÷”8±Û¡ƒ·1

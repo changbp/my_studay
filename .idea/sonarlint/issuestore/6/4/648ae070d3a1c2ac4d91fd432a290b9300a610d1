@@ -1,0 +1,19 @@
+
+l
+java:S1192s"VDefine a constant instead of duplicating this literal "' :: REGCLASS :: OID " 4 times.(ªôåÉ
+X
+java:S22591"BA "NullPointerException" could be thrown; "conn" is nullable here.(£í’á
+f
+java:S2095«"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¬øï±
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÒžØ¦
+S	java:S106 "9Replace this use of System.out or System.err by a logger.(ˆÃç­øÿÿÿÿ
+C
+java:S1172#"-Remove this unused method parameter "dbName".(¡¸žÎ
+B
+java:S1168À"+Return an empty collection instead of null.(¥¹ï
+B
+java:S1168ß"+Return an empty collection instead of null.(¥¹ï
+I
+java:S4925é"-Remove this "Class.forName()", it is useless.(õ†¨Äùÿÿÿÿ
+R
+java:S6437ê"6Revoke and change this password, as it is compromised.(ÌÕû±ýÿÿÿÿ

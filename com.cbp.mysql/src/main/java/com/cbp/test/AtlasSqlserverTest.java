@@ -24,32 +24,43 @@ import java.util.*;
 public class AtlasSqlserverTest {
     public static void main(String[] args) throws Exception {
         AtlasClientV2 atlasClientV2 = new AtlasClientV2(new String[]{"http://132.35.231.159:21000/"}, new String[]{"admin", "!QAZ2wsx3edc"});
-//        File file = new File("D:\\rdbms\\30000-sqlserver_model.json");
-//        String jsonStr = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
-//        AtlasTypesDef atlasTypesDef = JSONObject.parseObject(jsonStr, AtlasTypesDef.class);
+        File file = new File("D:\\rdbms\\30000-sqlserver_model.json");
+        String jsonStr = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+        AtlasTypesDef atlasTypesDef = JSONObject.parseObject(jsonStr, AtlasTypesDef.class);
 //        atlasClientV2.createAtlasTypeDefs(atlasTypesDef);
 //        // 创建instance
 //        AtlasEntity.AtlasEntityWithExtInfo instance = createInstance(getConn());
 //        atlasClientV2.createEntity(instance);
         // 创建db
 //        AtlasEntity.AtlasEntityWithExtInfo database = createDb("students",
-//                "41d94ab2-0ff1-424a-8df1-9a30b10dc024");
-////        atlasClientV2.deleteEntityByGuid("f27fde31-247c-4081-9da5-276423c492a1");
+//                "2fc64ef2-710b-4f29-9652-cef45b80f875");
+//        atlasClientV2.deleteEntityByGuid("f27fde31-247c-4081-9da5-276423c492a1");
 //        atlasClientV2.createEntity(database);
+//        List<String> schemas = getSchemas(getConn());
+//        schemas.forEach(s -> {
+//            AtlasEntity.AtlasEntityWithExtInfo database = createSchema(s,
+//                    "92207ed2-2e67-42a0-be9f-08fa345b42b5");
+////            atlasClientV2.deleteEntityByGuid("f27fde31-247c-4081-9da5-276423c492a1");
+//            try {
+//                atlasClientV2.createEntity(database);
+//            } catch (AtlasServiceException e) {
+//                e.printStackTrace();
+//            }
+//        });
         // 创建table
-//        List<String> nameList = getTableNameList(getConn(), "students");
-//        if (nameList != null && nameList.size() > 0) {
-//            nameList.forEach(tableName -> {
-//                String qualifiedNameTable = "students" + "." + tableName + "@192.168.110.101@sqlserver";
-//                AtlasEntity.AtlasEntityWithExtInfo table = createTable(getConn(), tableName,
-//                        qualifiedNameTable, "63ca2e0a-6ee0-456b-82bb-4beb58870e67");
-//                try {
-//                    atlasClientV2.createEntity(table);
-//                } catch (AtlasServiceException e) {
-//                    e.printStackTrace();
-//                }
-//            });
-//        }
+        List<String> nameList = getTableNameList(getConn(), "students","dbo");
+        if (nameList != null && nameList.size() > 0) {
+            nameList.forEach(tableName -> {
+                String qualifiedNameTable = "students.dbo" + "." + tableName + "@192.168.110.101@sqlserver";
+                AtlasEntity.AtlasEntityWithExtInfo table = createTable(getConn(), tableName,
+                        qualifiedNameTable, "3e37830f-f665-4188-a5ad-1dc8793dcb7b");
+                try {
+                    atlasClientV2.createEntity(table);
+                } catch (AtlasServiceException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
 //        atlasClientV2.deleteEntityByGuid("eb838c08-401d-4b96-ac13-0be78fa5a9e6");
 //        atlasClientV2.deleteEntityByGuid("21c9b84c-1a2f-459f-95d2-1a77532fd072");
@@ -58,20 +69,52 @@ public class AtlasSqlserverTest {
 //        atlasClientV2.deleteEntityByGuid("7ac3e819-a3b3-45a1-845f-51f4db090ece");
 //        atlasClientV2.deleteEntityByGuid("68630722-5d88-48c5-b427-9e494f57be08");
         // 创建column
-        List<String> columnNameList = getColumnNameList(getConn(), "students", "student");
-        if (columnNameList != null && columnNameList.size() > 0) {
-            columnNameList.forEach(columnName -> {
-                String qualifiedNameColumnName =
-                        "students.student" + "." + columnName + "@192.168.110.101@sqlserver";
-                AtlasEntity.AtlasEntityWithExtInfo column = createColumn(getConn(), columnName,
-                        qualifiedNameColumnName, "b0155d92-2a7c-4ec2-8927-40d01dee54df");
-                try {
-                    atlasClientV2.createEntity(column);
-                } catch (AtlasServiceException e) {
-                    e.printStackTrace();
+//        List<String> columnNameList = getColumnNameList(getConn(), "students", "student");
+//        if (columnNameList != null && columnNameList.size() > 0) {
+//            columnNameList.forEach(columnName -> {
+//                String qualifiedNameColumnName =
+//                        "students.student" + "." + columnName + "@192.168.110.101@sqlserver";
+//                AtlasEntity.AtlasEntityWithExtInfo column = createColumn(getConn(), columnName,
+//                        qualifiedNameColumnName, "b0155d92-2a7c-4ec2-8927-40d01dee54df");
+//                try {
+//                    atlasClientV2.createEntity(column);
+//                } catch (AtlasServiceException e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//        }
+    }
+
+    public static List<String> getSchemas(Connection conn) {
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        List<String> schemaList = new ArrayList<>();
+        String dbQuery = "SELECT schema_name FROM information_schema.schemata where schema_name not in "
+                + "('INFORMATION_SCHEMA','db_accessadmin','db_backupoperator','db_datareader','db_datawriter',"
+                + "'db_ddladmin','db_denydatareader','db_denydatawriter','db_owner','db_securityadmin','sys');";
+        try {
+            statement = conn.prepareStatement(dbQuery);
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                schemaList.add(rs.getString(1));
+            }
+            return schemaList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
                 }
-            });
+                if (statement != null) {
+                    statement.close();
+                }
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        return null;
     }
 
     private static AtlasEntity.AtlasEntityWithExtInfo createColumn(Connection conn, String columnName,
@@ -237,8 +280,8 @@ public class AtlasSqlserverTest {
         }
         HashMap<String, Object> db = new HashMap<>(5);
         db.put("guid", guId);
-        db.put("typeName", "sqlserver_db");
-        attributes.put("db", db);
+        db.put("typeName", "sqlserver_schema");
+        attributes.put("schema", db);
         atlasEntity.setAttributes(attributes);
         AtlasEntity.AtlasEntityWithExtInfo atlasEntityWithExtInfo = new AtlasEntity.AtlasEntityWithExtInfo();
         atlasEntityWithExtInfo.setEntity(atlasEntity);
@@ -303,6 +346,32 @@ public class AtlasSqlserverTest {
         }
     }
 
+    private static AtlasEntity.AtlasEntityWithExtInfo createSchema(String schema, String guId) {
+        AtlasEntity atlasEntity = new AtlasEntity();
+        atlasEntity.setTypeName("sqlserver_schema");
+        HashMap<String, Object> attributes = new HashMap<>(10);
+        attributes.put("qualifiedName", "db_2023." + schema + "@192.168.110.101@sqlserver");
+        attributes.put("owner", "sa");
+        attributes.put("ownerType", "user");
+        attributes.put("name", schema);
+        //查date
+        attributes.put("emailAddress", "1@qq.com");
+        attributes.put("createdBy", "sa");
+        attributes.put("createTime", new Date());
+        attributes.put("updatedBy", "sa");
+        attributes.put("updateTime", new Date());
+        //描述
+        attributes.put("description", "测试sqlserver创建db");
+        HashMap<String, Object> instance = new HashMap<>(5);
+        instance.put("guid", guId);
+        instance.put("typeName", "sqlserver_db");
+        attributes.put("db", instance);
+        atlasEntity.setAttributes(attributes);
+        AtlasEntity.AtlasEntityWithExtInfo atlasEntityWithExtInfo = new AtlasEntity.AtlasEntityWithExtInfo();
+        atlasEntityWithExtInfo.setEntity(atlasEntity);
+        return atlasEntityWithExtInfo;
+    }
+
     private static AtlasEntity.AtlasEntityWithExtInfo createDb(String dbName, String guId) {
         AtlasEntity atlasEntity = new AtlasEntity();
         atlasEntity.setTypeName("sqlserver_db");
@@ -329,11 +398,12 @@ public class AtlasSqlserverTest {
         return atlasEntityWithExtInfo;
     }
 
-    public static List<String> getTableNameList(Connection conn, String dbName) {
+    public static List<String> getTableNameList(Connection conn, String dbName,String schema) {
         PreparedStatement statement = null;
         ResultSet rs = null;
         List<String> tableNameList = new ArrayList<>();
-        String dbQuery = "SELECT * FROM information_schema.tables WHERE table_catalog = '" + dbName + "'";
+        String dbQuery = "SELECT * FROM information_schema.tables WHERE table_catalog = '" + dbName + "' "
+                + " and table_schema = '" + schema + "'";
         try {
             statement = conn.prepareStatement(dbQuery);
             rs = statement.executeQuery();

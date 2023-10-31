@@ -1,0 +1,26 @@
+
+g
+java:S11928"LDefine a constant instead of duplicating this literal "mysql_table" 3 times.(¾ô¸žûÿÿÿÿ
+u
+java:S1488†"^Immediately return this expression instead of assigning it to the temporary variable "entity".(ŠÎÅ¬
+P
+java:S1854":Remove this useless assignment to local variable "entity".(öýúò
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÉœÑß
+A
+java:S1481"+Remove this unused "entity" local variable.(öýúò
+V	java:S125!"<This block of commented-out lines of code should be removed.(‘Î…Éøÿÿÿÿ
+Q	java:S125*"<This block of commented-out lines of code should be removed.(âŽêÄ
+N	java:S106O"9Replace this use of System.out or System.err by a logger.(·Øóû
+S	java:S106\"9Replace this use of System.out or System.err by a logger.(¯µàåüÿÿÿÿ
+Z
+java:S1128"DRemove this unused import 'com.unicom.udme.common.util.StringUtils'.(äì¿Ì
+U
+java:S1128"@Remove this unused import 'org.apache.atlas.type.AtlasTypeUtil'.(ÿÊØ8
+W
+java:S1128"ARemove this unused import 'org.springframework.util.ObjectUtils'.(ÜêÅ™
+S
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ
+D
+java:S1144G".Remove this unused private "extracted" method.(Ñ™¥ú
+Q
+java:S1144Ž"5Remove this unused private "getCommandResult" method.(ÛÄÂÈüÿÿÿÿ
