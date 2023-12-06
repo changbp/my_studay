@@ -1,8 +1,7 @@
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
@@ -17,6 +16,21 @@ public class Test {
 //        System.out.println(maximumProduct(nums));
 //        String name_is = reverseWords("name is");
 //        System.out.println(name_is);
+
+        String d = "2023-12-03 00:00:00";
+        String d1 = "2023-12-09 00:00:00";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date date = simpleDateFormat.parse(d);
+            Date date2 = simpleDateFormat.parse(d1);
+            long time = date.getTime();
+            long time2 = date2.getTime();
+            System.out.println(time);
+            System.out.println(time2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
